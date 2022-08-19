@@ -1,13 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import logo from '../../../images/spotify.png';
 import { loginUrl } from '../../../secret';
+import { getTokenFromUrl } from '../../../secret'
+import SpotifyWebApi from 'spotify-web-api-js'
 
 type Props = {}
 
+type spotifyData = {
+  access_token?: string,
+  token_type?: string,
+  expire_in?: string
+}
+
+const spotify = new SpotifyWebApi();
+
 const WelcomePage = (props: Props) => {
 
-  console.log(loginUrl);
+  const [spotifyData, setSpotifyData] = useState({} as spotifyData);
+  const [spotifyToken, setSpotifyToken] = useState("");
+
+  useEffect(() => { 
+    setSpotifyData(getTokenFromUrl());
+    console.log(spotifyData);
+    console.log(spotifyData.access_token);
+    window.location.hash = "";
+
+    if(spotifyData.access_token){
+      setSpotifyToken(spotifyData.access_token);
+      spotify.setAccessToken(spotifyToken);
+    }
+
+
+  },[])
+
 
   return (
     <WelcomeContainer>
@@ -19,7 +45,6 @@ const WelcomePage = (props: Props) => {
         Using your top artists, songs, and vibes, we create an AI image that describes what you listen to.
       </Description>
       <Button href={loginUrl}>Login</Button>
-
     </WelcomeContainer>
   )
 }
@@ -53,6 +78,7 @@ const Title = styled.h1`
 const Description = styled.p`
   margin:2rem;
   color: white;
+  text-align: center;
 
 `
 
