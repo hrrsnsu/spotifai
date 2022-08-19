@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../../../images/spotify.png';
+import { loginUrl } from '../../../secret';
 
 type Props = {}
 
 const WelcomePage = (props: Props) => {
+
+  console.log(loginUrl);
 
   return (
     <WelcomeContainer>
@@ -15,7 +18,7 @@ const WelcomePage = (props: Props) => {
       <Description>
         Using your top artists, songs, and vibes, we create an AI image that describes what you listen to.
       </Description>
-      <Button>Lets go!</Button>
+      <Button href={loginUrl}>Login</Button>
 
     </WelcomeContainer>
   )
@@ -53,11 +56,24 @@ const Description = styled.p`
 
 `
 
-const Button = styled.button`
+const Button = styled.a`
   margin: 2rem;
   font-size: 1rem;
   border-radius: 2rem;
   width: 10rem;
   height: 4rem;
+  background-color: white;
+  text-align: center;
+  line-height: 4rem;
+  font-weight: 700;
+  transition:  background-color 0.1s ease;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover{
+    background-color: black;
+    color: white;
+    
+  }
 `
 export default WelcomePage;
