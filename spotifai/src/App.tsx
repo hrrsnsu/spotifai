@@ -1,5 +1,5 @@
 import React from 'react';
-import WelcomePage from './components/Pages/WelcomePage/WelcomePage'
+import WelcomePage from './components/Pages/WelcomePage'
 import './App.css';
 
 function App() {

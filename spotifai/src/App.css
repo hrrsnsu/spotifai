@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
 *{
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
-    background-color: #1DB954;
+    background-color: #0e1111;
+    height: 100%;
 }
+
