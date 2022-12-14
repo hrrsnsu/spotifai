@@ -5,7 +5,7 @@ import { loginUrl } from "../../secret";
 import { getTokenFromUrl } from "../../secret";
 import SpotifyWebApi from "spotify-web-api-js";
 import styled from "styled-components";
-import UserPage from "./UserPage";
+import NewUserPage from "./UserPage";
 
 const spotify = new SpotifyWebApi();
 
@@ -31,11 +31,11 @@ const NewWelcomePage = (props: Props) => {
   return (
     <div>
       {spotifyToken ? (
-        <UserPage token={spotifyToken} />
+        <NewUserPage token={spotifyToken} />
       ) : (
         <Welcome>
-          <Header loginUrl={loginUrl}/>
-          <Billboard loginUrl={loginUrl}/>
+          <Header loginUrl={loginUrl} spotifyToken={spotifyToken} />
+          <Billboard loginUrl={loginUrl} />
         </Welcome>
       )}
     </div>

@@ -3,6 +3,7 @@ import logo from "../../images/spotify.png";
 
 type Props = {
   loginUrl?: string;
+  spotifyToken?: string;
 };
 
 const Header = (props: Props) => {
@@ -18,9 +19,11 @@ const Header = (props: Props) => {
             GitHub
           </a>
         </ListItem>
-        <ListItem>About</ListItem>
+        <ListItem><a href={"https://openai.com/dall-e-2/"} target="_blank">
+            About
+          </a></ListItem>
         <ListItem>
-          <a href={props.loginUrl}>Login</a>
+          <a href={props.spotifyToken ? "https://spotify.com/" : props.loginUrl}>{props.spotifyToken ? "Signed in!" : "Login"}</a>
         </ListItem>
       </List>
     </HeaderContainer>
