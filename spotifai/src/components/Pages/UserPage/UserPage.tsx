@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
+import axios from "axios";
 import styled from "styled-components";
 const spotify = new SpotifyWebApi();
 
@@ -26,6 +27,16 @@ interface track{
 const UserPage = (_props: Props) => {
   const [topTracks, setTopTracks] = useState([] as string[]);
   const [topArtists, setTopArtists] = useState([] as string[]);
+  const [prompt, setPrompt] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState("");
+
+  const makePrompt = (topTracks: string[], topArtists: string[]) => {
+
+    const myPrompt = `Make an album cover by ${topArtists[0]} and ${topArtists[1]} using the songs ${topTracks[0]} and ${topTracks[1]} as inspiration, cartoon`;
+  
+    setPrompt(myPrompt);
+  };
 
   useEffect(() => {
     spotify.getMyTopTracks({limit: 5, time_range: 'short_term'}).then((tracks) => {
@@ -45,10 +56,31 @@ const UserPage = (_props: Props) => {
       })
       setTopArtists(artistArr);
     });
-
   }, []);
 
-  console.log(topTracks);
+  useEffect(() => {
+    makePrompt(topTracks, topArtists);
+  }, [topTracks, topArtists]);
+
+  const getImage = async (e: any) => {
+    setLoading(true)
+    try {
+      const uri = `http://${window.location.hostname}:8080/dalle?text=${encodeURI(prompt)}`
+
+      const resp = await axios.get(uri);
+    
+      const data = resp.data;
+      setImage(data);
+      setLoading(false);
+   
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  console.log(prompt);
+  console.log(loading)
+  console.log(image);
 
   return (
     <div>
@@ -65,7 +97,10 @@ const UserPage = (_props: Props) => {
               {topArtists.map((artist:string, index)=> <li key={index}>{artist}</li>)}
             </List>
         </Cards>
+        <button onClick={getImage}>Create the image!</button>
+      <img src={"data:image/jpeg;base64," + image} />
       </UserContainer>
+    
       
     </div>
   );

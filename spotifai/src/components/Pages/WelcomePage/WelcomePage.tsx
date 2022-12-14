@@ -80,7 +80,7 @@ const Description = styled.p`
   text-align: center;
 `;
 
-const Button = styled.a`
+export const Button = styled.a`
   margin: 2rem;
   font-size: 1rem;
   border-radius: 2rem;
