@@ -36,7 +36,7 @@ const NewUserPage = (props: Props) => {
   const [image, setImage] = useState("");
 
   const makePrompt = (topTracks: string[], topArtists: string[]) => {
-    const myPrompt = `Make an album cover by ${topArtists[0]} and ${topArtists[1]} using the songs ${topTracks[0]} and ${topTracks[1]} as inspiration, cartoon`;
+    const myPrompt = `A moody album cover by ${topArtists[0]} and ${topArtists[1]} but it is abstract and colorful`;
 
     setPrompt(myPrompt);
   };
