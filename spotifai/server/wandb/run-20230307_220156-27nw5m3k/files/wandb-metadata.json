@@ -1,0 +1,22 @@
+{
+    "os": "macOS-12.5-x86_64-i386-64bit",
+    "python": "3.10.6",
+    "heartbeatAt": "2023-03-08T06:01:57.042157",
+    "startedAt": "2023-03-08T06:01:56.463243",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/harrisonsu/Desktop/projects/spotifai/client/spotifai/spotifai/server/app.py",
+    "codePath": "spotifai/server/app.py",
+    "git": {
+        "remote": "https://github.com/hrrsnsu/spotifai.git",
+        "commit": "0a1ecf7f03c3884ba5609b1d4749f37efcf1bb5c"
+    },
+    "email": "hrrsnsu@gmail.com",
+    "root": "/Users/harrisonsu/Desktop/projects/spotifai/client/spotifai",
+    "host": "Harrisons-MBP.localdomain",
+    "username": "harrrisonsu",
+    "executable": "/usr/local/bin/python3"
+}
